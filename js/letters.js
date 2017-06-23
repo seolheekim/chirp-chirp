@@ -16,10 +16,43 @@ var counter = {
 }
 
 function countLetters(counter, sample_text){
-  // FIX ME
+  sample_text = sample_text.toLowerCase();
+ var slicedLetters = sample_text.slice(0, 1);
+
+ if(sample_text.length === 0){
+   return counter
+ }
+
+ if(counter.hasOwnProperty(slicedLetters)){
+   counter[slicedLetters] += 1
+ }
+
+ sample_text = sample_text.slice(1, sample_text.length)
+  return countLetters(counter, sample_text)
+
+
 }
 
 $(document).ready(function(){
   countLetters(counter, sample_text);
   $("#result").html(JSON.stringify(counter));
 });
+
+//LOL deconstructed
+//function countLetters(counter, sample_text){
+//   var strArray = sample_text.split('')
+//   var removeSpace = strArray.filter(function(x) { return x.trim() != ''; });
+//   var newArray = removeSpace.filter(function(p) { return p.trim() != '.'; });
+
+// //   var string = removePeriod.toString().replace(/,+/g,'').toLowerCase()
+// //  console.log(string)
+//   for(var i = 0; i < newArray.length; i++){
+//      if(newArray.indexOf(i) === -1){
+//        console.log(newArray[i])
+//      }
+//   }
+
+
+// }
+// var result = countLetters(counter, sample_text);
+// console.log(result)
